@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="../css/navbar.css">
+
+<nav class="navbar">
+  <a href="../index.html" class="navbar-logo">KeiShi.</a>
+
+  <!-- Spider Image Hamburger -->
+  <img src="../resources/spider.png" alt="Menu" class="spider-menu" onclick="toggleSpiderMenu()">
+
+  <div class="navbar-center" id="navMenu">
+    <ul class="navbar-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../html/about.html">About</a></li>
+      <li><a href="../html/project.html">Projects</a></li>
+       <li><a href="../html/collection-proj.html">Collection</a></li>
+    </ul>
+  </div>
+
+  <!-- Spider Dropdown Menu (with web image background) -->
+  <div class="spider-dropdown" id="spiderDropdown" style="display:none;">
+    <img src="../resources/spider-web-nav.png" alt="" class="web-design-bg">
+    <div class="spider-menu-links">
+      <a href="index.html#bat-img">Skills</a>
+      <a href="index.html#section2border">Contact Me</a>
+      <a href="collection-proj.html">Collection</a>
+      <a href="#">Admin</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleSpiderMenu() {
+    const dropdown = document.getElementById('spiderDropdown');
+    if (dropdown.style.display === "none" || dropdown.style.display === "") {
+      dropdown.style.display = "block";
+      dropdown.classList.add('show');
+    } else {
+      dropdown.style.display = "none";
+      dropdown.classList.remove('show');
+    }
+  }
+
+  // Optional: close dropdown if user clicks outside
+  document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('spiderDropdown');
+    const spiderIcon = document.querySelector('.spider-menu');
+    if (
+      !dropdown.contains(e.target) &&
+      !spiderIcon.contains(e.target)
+    ) {
+      dropdown.style.display = "none";
+      dropdown.classList.remove('show');
+    }
+  });
+</script>

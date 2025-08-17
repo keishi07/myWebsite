@@ -1,0 +1,433 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 40px 60px 0 60px;
+  box-sizing: border-box;
+  background: transparent;
+  font-family: 'Poppins', Arial, sans-serif;
+  position: relative;
+  z-index: 1200;
+}
+
+.navbar-logo {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ae6c8a;
+  letter-spacing: 0.5px;
+  flex: 0 0 auto;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navbar-logo:hover {
+  color: #814365;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #ae6c8a;
+  font-size: 18px;
+  font-weight: 400;
+  transition: color 0.2s;
+  padding-bottom: 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.navbar-links a.active,
+.navbar-links a:hover {
+  color: #814365;
+}
+
+.navbar-links a.active::after,
+.navbar-links a:hover::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 24px;
+  border-bottom: 2px solid #ae6c8a;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+.navbar-links:hover a.active::after {
+  display: none;
+}
+.navbar-links a:hover::after {
+  display: block;
+}
+.navbar-links:hover a:not(:hover)::after {
+  display: none;
+}
+
+/* Spider image hamburger */
+.spider-menu {
+  display: block;
+  width: 80px;
+  height: auto;
+  position: fixed;
+  right: 210px;
+  top: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1101;
+  padding-top: 0%;
+}
+.spider-menu:hover {
+  transform: scale(1.1);
+}
+
+/* Dropdown menu for spider (with web image as background) */
+.spider-dropdown {
+  display: none;
+  position: fixed;
+  top: 84px;
+  right: 200px;
+  width: 270px;
+  min-height: 340px;
+  background: transparent;
+  z-index: 1103;
+  text-align: center;
+  pointer-events: auto;
+  overflow: visible;
+}
+.spider-dropdown.show {
+  display: block;
+}
+
+.web-design-bg {
+  position: absolute;
+  top: 35px;
+  left: 35.8%;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.spider-menu-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 90px;
+  margin-left: 68%;
+  align-items: center;
+}
+
+.spider-menu-links a {
+  background: #fff;
+  color: #ae6c8a;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 10px;
+  width: 180px;
+  padding: 11px 0;
+  box-shadow: 0 2px 10px rgba(174, 108, 138, 0.08);
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.5px;
+  border: none;
+  text-align: center;
+}
+
+.spider-menu-links a:hover {
+  background: #f3e6ef;
+  color: #814365;
+}
+
+/* Responsive adjustments for navbar */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 20px 25px;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(243, 230, 239, 0.98);
+  }
+  .navbar-logo {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  .navbar-center {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .navbar-links {
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 15px 0;
+  }
+  .navbar-links li {
+    width: 100%;
+    text-align: center;
+  }
+  .navbar-links a {
+    font-size: 17px;
+    padding: 10px 0;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+  .navbar-links a.active::after,
+  .navbar-links a:hover::after {
+    content: "";
+    display: block;
+    width: 40px;
+    margin: 5px auto 0;
+    border-bottom: 2.5px solid #ae6c8a;
+    border-radius: 2px;
+  }
+  .navbar-links:hover a.active::after {
+    display: none;
+  }
+  .navbar-links a:hover::after {
+    display: block;
+  }
+  .navbar-links:hover a:not(:hover)::after {
+    display: none;
+  }
+  .spider-menu,
+  .spider-dropdown {
+    right: 40px;
+  }
+  .spider-dropdown,
+  .web-design-bg {
+    width: 210px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    padding: 30px 40px 0 40px;
+  }
+  .navbar-links {
+    gap: 35px;
+  }
+  .navbar-links a {
+    font-size: 17px;
+  }
+  .spider-menu {
+    width: 60px;
+    right: 100px;
+  }
+  .spider-dropdown {
+    right: 100px;
+    width: 200px;
+    min-height: 250px;
+    height: 250px;
+  }
+  .web-design-bg {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .navbar-logo {
+    font-size: 20px;
+  }
+  .navbar-links {
+    gap: 20px;
+  }
+  .navbar-links a {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+  .navbar-links a.active::after,
+  .navbar-links a:hover::after {
+    width: 35px;
+    margin-top: 4px;
+  }
+  .spider-menu {
+    width: 35px;
+    right: 20px;
+  }
+  .spider-dropdown {
+    right: 20px;
+    width: 130px;
+    min-height: 160px;
+    height: 160px;
+  }
+  .web-design-bg {
+    width: 130px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .spider-menu {
+    width: 80px;
+    right: 200px;
+  }
+  .spider-dropdown {
+    right: 200px;
+    width: 270px;
+  }
+  .web-design-bg {
+    width: 270px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .spider-menu {
+    width: 70px;
+    right: 150px;
+  }
+  .spider-dropdown {
+    right: 150px;
+    width: 220px;
+  }
+  .web-design-bg {
+    width: 220px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .spider-menu {
+    width: 60px;
+    right: 100px;
+  }
+  .spider-dropdown {
+    right: 100px;
+    width: 180px;
+  }
+  .web-design-bg {
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .spider-menu {
+    width: 50px;
+    right: 60px;
+  }
+  .spider-dropdown {
+    right: 60px;
+    width: 140px;
+  }
+  .web-design-bg {
+    width: 140px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 575px) {
+  .spider-menu {
+    width: 40px;
+    right: 40px;
+  }
+  .spider-dropdown {
+    right: 40px;
+    width: 100px;
+  }
+  .web-design-bg {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .spider-menu {
+    width: 35px;
+    right: 20px;
+  }
+  .spider-dropdown {
+    right: 20px;
+    width: 80px;
+  }
+  .web-design-bg {
+    width: 80px;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 767px) {
+  .spider-menu {
+    top: 0;
+  }
+  .spider-dropdown {
+    top: 60px;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .spider-menu {
+    width: 40px;
+    right: 40px;
+  }
+  .spider-dropdown {
+    right: 40px;
+    width: 100px;
+  }
+  .web-design-bg {
+    width: 100px;
+  }
+}
+
+/* --- Responsive fix for mobile devices --- */
+@media screen and (max-width: 600px) {
+  .spider-menu {
+    width: 45px;
+    right: 10px;
+    top: 10px;
+    z-index: 1101;
+  }
+  .spider-dropdown {
+    right: 0px;
+    top: 65px;
+    width: 90vw;
+    min-width: 160px;
+    max-width: 320px;
+    min-height: 200px;
+    background: transparent;
+    z-index: 1103;
+    border-radius: 16px;
+    padding: 0;
+  }
+  .web-design-bg {
+    width: 100%;
+    left: 0;
+    top: 25px;
+    max-width: 320px;
+    min-width: 160px;
+    object-fit: contain;
+  }
+  .spider-menu-links {
+    margin-left: 0;
+    margin-top: 65px;
+    align-items: center;
+    width: 100%;
+  }
+  .spider-menu-links a {
+    width: 90vw;
+    max-width: 320px;
+    min-width: 160px;
+    font-size: 17px;
+    padding: 12px 0;
+    margin: 0 auto;
+  }
+}
+/* --- End fix --- */

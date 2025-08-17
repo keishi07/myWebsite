@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KeiShi Portfolio</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Navbar Include -->
+  <div id="navbar"></div>
+  <script>
+    fetch("../html/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
+
+  <div class="decorative-elements">
+    <img src="../resources/wave1.png" alt="" class="upper-left-design">
+  </div>
+
+  <!-- First Section -->
+  <main class="hero-section">
+    <div class="hero-content">
+      <div class="text-left">
+        <h2 class="subtitle">Flowing Forward,</h2>
+        <h1 class="title">Growing</h1>
+      </div>
+      <div class="text-right">
+        <p class="accent">Brighter.</p>
+      </div>
+      <p class="description">Dive into my portfolio and uncover the skills, experiences, and passion that drive my journey</p>
+      <button class="cta-button" onclick="window.location.href='../html/about.html'">Get to Know Me</button>
+    </div>
+    <div class="gif-container">
+      <img src="../resources/shadow.png" alt="" class="card-shadow">
+      <img src="../resources/moving-card.gif" alt="Decorative animation" class="hero-gif">
+    </div>
+    <img src="../resources/wave2.png" alt="" class="bottom-right-design">
+  </main>
+
+  <!-- Second Section -->
+  <main class="skill-section">
+    <h1 class="section-title">Skills</h1>
+    <img src="../resources/bat.png" alt="spider-img" class="bat-design" id="bat-img">
+    <div class="corousel">
+      <img src="../resources/1.png" alt="card1" class="coder">
+      <img src="../resources/3.png" alt="card2" class="architect">
+      <img src="../resources/5.png" alt="card3" class="sentinel">
+      <img src="../resources/7.png" alt="card4" class="tinkerer">
+      <img src="../resources/9.png" alt="card5" class="alchemist">
+      <img src="../resources/11.png" alt="card6" class="muse">
+      <img src="../resources/13.png" alt="card7" class="solver">
+      <img src="../resources/15.png" alt="card8" class="observer">
+      <img src="../resources/17.png" alt="card9" class="chamelion">
+      <img src="../resources/19.png" alt="card10" class="collaborator">
+    </div>
+    <div class="carousel-indicator">swipe to explore</div>
+  </main>
+
+  <!-- Third Section -->
+  <main class="contactMe-section">
+    <img src="../resources/section2_border.png" alt="section2_border" class="section2_border-design" id="section2border">
+    <h1 class="section-title">Contact Me</h1>
+    <div class="container-main">
+      <img src="../resources/cat.png" alt="cat-design" class="cat-design">
+      <div class="main-container">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p>Feel free to drop a message. I'd love to connect and hear from you.</p>
+          <!-- Downloadable CV Link -->
+          <a href="../resources/resume_aguasito_updated.pdf" class="download-cv">
+            <i class="cv-icon"></i>
+            <span>Download my CV</span>
+          </a>
+          <div class="contact-detail">
+            <i class="email-icon"></i>kshiaguasito@gmail.com
+          </div>
+          <div class="contact-detail">
+            <i class="phone-icon"></i>+63 962 837 6905
+          </div>
+        </div>
+
+        <!-- Contact Form (HTML only, no backend) -->
+        <form class="contact-form" id="contactForm">
+          <input type="text" class="form-input" name="name" placeholder="Name" required>
+          <input type="text" class="form-input" name="contact" placeholder="Contact No.">
+          <input type="email" class="form-input" name="email" placeholder="Email" required>
+          <textarea class="form-input" name="message" placeholder="Message" required></textarea>
+          <button type="button" class="send-btn" onclick="showSuccess()">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="contact-modal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal" onclick="closeContactModal()"></button>
+        <div id="modal-success" class="modal-message success">
+          <div class="modal-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h3>Message Sent!</h3>
+          <p>Your message has been successfully sent. I'll get back to you soon!</p>
+          <button class="modal-btn" onclick="closeContactModal()">Got it</button>
+        </div>
+        <div id="modal-error" class="modal-message error">
+          <div class="modal-icon">
+            <i class="fas fa-exclamation"></i>
+          </div>
+          <h3>Oops!</h3>
+          <p>Something went wrong while sending your message. Please try again.</p>
+          <button class="modal-btn" onclick="closeContactModal()">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Include -->
+  <div id="footer"></div>
+  <script>
+    fetch("../html/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+  <script src="../js/carousel.js"></script>
+  <script src="../js/scrollUp.js"></script>
+  <script src="../js/skillOverlay.js"></script>
+  <script src="../js/carousel-indicator.js"></script>
+
+  
+</body>
+</html>

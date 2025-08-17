@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeiShi Project</title>
+    <link rel="stylesheet" href="../css/collection-proj.css">
+</head>
+
+<body>
+     <!-- Navbar Include -->
+  <div id="navbar"></div>
+  <script>
+    fetch("../html/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
+
+    <div class="decorative-elements">
+        <img src="../resources/wave1.png" alt="" class="upper-left-design">
+    </div>
+
+    <main class="collection-main">
+        <section class="collection-left">
+            <div class="cards-row">
+                <div class="project-card card-large">
+                    <img src="../resources/collection1.jfif" alt="Project 1" class="card-img">
+                </div>
+                <div class="project-card card-medium">
+                    <img src="../resources/collection4.jfif" alt="Project 2" class="card-img">
+                </div>
+                <div class="project-card card-medium">
+                    <img src="../resources/collection3.jfif" alt="Project 3" class="card-img">
+                </div>
+                <div class="project-card card-medium">
+                    <img src="../resources/collection2.jfif" alt="Project 4" class="card-img">
+                </div>
+                <div class="project-card card-medium">
+                    <img src="../resources/collection5.png" alt="Project 4" class="card-img">
+                </div>
+            </div>
+            <div class="collection-footer">
+                <span class="collection-page">01</span>
+                <div class="footer-line"></div>
+                <div class="nav-arrows">
+                    <button class="arrow" aria-label="Previous">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="arrow" aria-label="Next">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 6 15 12 9 18"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="collection-right">
+            <span class="archive-subtitle">My Creative</span>
+            <span class="archive-title">Archive</span>
+            <p class="archive-desc">
+                A visual collection of the projects I’ve designed <br>and developed
+                throughout my journey in tech<br> and creativity.
+            </p>
+        </section>
+    </main>
+
+    <script src="../js/collection.js"></script>
+
+</body>
+
+</html>

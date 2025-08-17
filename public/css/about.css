@@ -1,0 +1,217 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Playpen Sans', cursive;
+  background: linear-gradient(180deg, #f3e6ef 0%, #e5b7cf 100%);
+  overflow-x: hidden;
+}
+
+body, .main-content, .book-container, #book {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* MAIN CONTENT - push down below navbar */
+.main-content, .book-container, #book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.main-content {
+  margin-top: 80px; /* Adjust as needed for your navbar height */
+}
+
+/* Book cover and "hard" pages */
+.hard {
+  width: 540px;
+  height: 730px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: none !important; /* REMOVE ZOOM EFFECT */
+}
+
+/* Responsive for tablets and small desktops */
+@media screen and (max-width: 1100px) {
+  .hard {
+    width: 400px;
+    height: 540px;
+  }
+}
+
+/* Responsive for medium tablets */
+@media screen and (max-width: 900px) {
+  .main-content { margin-top: 68px; }
+  .hard {
+    width: 320px;
+    height: 420px;
+  }
+}
+
+/* Responsive for large phones/tablets */
+@media screen and (max-width: 700px) {
+  .main-content { margin-top: 56px; }
+  .hard {
+    width: 90vw;
+    height: auto;
+    max-width: 90vw;
+    min-width: 140px;
+    aspect-ratio: 3/4;
+  }
+}
+
+/* Responsive for small phones */
+@media screen and (max-width: 480px) {
+  .main-content { margin-top: 32px; }
+  .hard {
+    width: 98vw;
+    min-width: 90px;
+    aspect-ratio: 3/4;
+    height: auto;
+  }
+}
+
+/* Book images */
+.cover-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  transition: none !important; /* REMOVE ZOOM EFFECT */
+}
+
+@media screen and (max-width: 900px) {
+  .cover-img {
+    max-width: 320px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .cover-img {
+    width: 92vw;
+    max-width: 92vw;
+    height: auto;
+    object-fit: contain;
+  }
+}
+@media screen and (max-width: 480px) {
+  .cover-img {
+    max-width: 98vw;
+    height: auto;
+  }
+}
+
+/* Page spread container */
+.own-size {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  margin: 24px 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .own-size {
+    gap: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .own-size {
+    flex-direction: column;
+    gap: 0;
+    margin: 0 0 32px 0;
+    align-items: center;
+    width: 100vw;
+  }
+}
+
+/* Each page in the spread */
+.own-size > div {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 260px;
+  max-width: 480px;
+  height: 540px;
+  overflow: hidden;
+  padding: 24px 12px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 900px) {
+  .own-size > div {
+    min-width: 120px;
+    max-width: 240px;
+    height: 340px;
+    padding: 12px 4px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .own-size > div {
+    display: none;
+    width: 98vw;
+    min-width: unset;
+    max-width: 98vw;
+    min-height: 80px;
+    max-height: 220px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .own-size > div.active-page {
+    display: flex;
+  }
+}
+@media screen and (max-width: 480px) {
+  .own-size > div {
+    min-width: 70px;
+    min-height: 32px;
+    max-width: 98vw;
+    max-height: 60px;
+  }
+}
+
+/* Images in page */
+.own-size img {
+  max-width: 90%;
+  max-height: 220px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  transition: none !important; /* REMOVE ZOOM EFFECT */
+}
+
+@media screen and (max-width: 900px) {
+  .own-size img {
+    max-width: 80%;
+    max-height: 140px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .own-size img {
+    max-width: 70vw;
+    max-height: 120px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .own-size img {
+    max-width: 80vw;
+    max-height: 44px;
+  }
+}
+
+/* Hide scrollbars for book container */
+.book-container::-webkit-scrollbar { display: none; }
+.book-container { -ms-overflow-style: none; scrollbar-width: none; }

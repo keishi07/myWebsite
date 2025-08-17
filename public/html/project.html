@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeiShi Project</title>
+    <link rel="stylesheet" href="../css/project.css">
+</head>
+
+<body>
+      <!-- Navbar Include -->
+  <div id="navbar"></div>
+  <script>
+    fetch("../html/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
+
+    <div class="decorative-elements">
+        <img src="../resources/wave1.png" alt="" class="upper-left-design">
+    </div>
+
+    <div class="project-main">
+        <a href="project1.html" class="project-link">
+            <img src="../resources/Project1.png" alt="project1" class="project1">
+            <div class="project-overlay">
+                <img src="../resources/info-project1.png" alt="info-project1" class="info-project1">
+            </div>
+
+        </a>
+
+        <a href="project2.html" class="project-link">
+            <img src="../resources/project2.png" alt="project2" class="project2">
+            <div class="project-overlay">
+                <img src="../resources/info-project2.png" alt="info-project2" class="info-project2">
+            </div>
+        </a>
+
+        <a href="project3.html" class="project-link">
+            <img src="../resources/project3.png" alt="project3" class="project3">
+            <div class="project-overlay">
+                <img src="../resources/info-project3.png" alt="info-project3" class="info-project3">
+            </div>
+        </a>
+    </div>
+
+    <script src="../js/project.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KeiShi About</title>
+    <link rel="stylesheet" href="../css/about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&family=Playpen+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Include -->
+    <div id="navbar"></div>
+    <script>
+        fetch("../html/navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+    </script>
+
+    <div class="decorative-elements">
+        <img src="../resources/wave1.png" alt="" class="upper-left-design">
+    </div>
+
+    <main class="main-content">
+        <div class="book-container">
+            <div id="book">
+                <!-- Front Cover -->
+                <div class="hard front-cover">
+                    <img src="../resources/front-cover.png" alt="Book front cover" class="cover-img">
+                </div>
+
+                <!-- First Page Spread -->
+                <div class="own-size">
+                    <div class="ch1left-content">
+                        <img src="../resources/page1.png" alt="Book First Page" class="page1">
+                    </div>
+                    <div class="ch1right-content">
+                        <img src="../resources/page2.png" alt="Book Second Page" class="page2">
+                    </div>
+                </div>
+
+                <!-- Second Page Spread -->
+                <div class="own-size">
+                    <div class="ch2left-content">
+                        <img src="../resources/page3.png" alt="Book Third Page" class="page3">
+                    </div>
+                    <div class="ch2right-content">
+                        <img src="../resources/page4.png" alt="Book Fourth Page" class="page4">
+                    </div>
+                </div>
+
+                <!-- Third Page Spread -->
+                <div class="own-size">
+                    <div class="ch3left-content">
+                        <img src="../resources/page5.png" alt="Book Fifth Page" class="page5">
+                    </div>
+                    <div class="ch3right-content">
+                        <img src="../resources/page6.png" alt="Book Sixth Page" class="page6">
+                    </div>
+                </div>
+
+                <!-- Fourth Page Spread -->
+                <div class="own-size">
+                    <div class="ch4left-content">
+                        <img src="../resources/page7.png" alt="Book Seventh Page" class="page7">
+                    </div>
+                    <div class="ch4right-content">
+                        <img src="../resources/page8.png" alt="Book Eighth Page" class="page8">
+                    </div>
+                </div>
+
+                <!-- Back Cover -->
+                <div class="hard back-cover">
+                    <img src="../resources/back-cover.png" alt="Book back cover" class="cover-img">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/about.js"></script>
+</body>
+
+</html>

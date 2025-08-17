@@ -1,0 +1,1997 @@
+/* Navbar & Logo Visibility Fix */
+nav, 
+.navbar,
+.nav-container,
+.logo-container,
+.logo {
+    position: relative;
+    z-index: 100 !important; /* Higher z-index to ensure visibility */
+}
+
+/* If your navbar has a specific class name, add it here */
+.navbar-brand,
+.navbar-logo,
+.site-logo {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ensure proper spacing for navbar */
+body {
+    padding-top: 0; /* Remove any top padding that might push navbar out of view */
+}
+
+/* Adjust hero section to not overlap navbar */
+.hero-section {
+    padding-top: 100px; /* Add space for navbar, adjust value as needed */
+}
+
+/* Decorative elements position adjustment */
+.decorative-elements {
+    position: absolute; /* Ensure it's absolute, not fixed */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden; /* Prevent horizontal scrolling on all devices */
+    scroll-behavior: smooth; /* Enable smooth scrolling throughout the page */
+    scrollbar-width: thin; /* Firefox scrollbar styling */
+    scrollbar-color: #9a5a78 #f3e6ef; /* Firefox scrollbar colors: thumb and track */
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f3e6ef; /* Light pink background matching site gradient */
+    border-radius: 10px; /* Rounded corners for track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9a5a78; /* Purple thumb matching site accent colors */
+    border-radius: 10px; /* Rounded corners for thumb */
+    border: 3px solid #f3e6ef; /* Creates padding effect around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #814365; /* Darker purple on hover */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f3e6ef 0%, #e5b7cf 100%);
+    font-family: 'Poppins', Arial, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Scroll-to-top button styling */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #9a5a78;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(129, 67, 101, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top-btn i {
+    font-size: 20px;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top-btn:hover {
+    background: #814365;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(129, 67, 101, 0.4);
+}
+
+/* Section scrolling styles */
+.hero-section, .skill-section, .contactMe-section {
+    scroll-margin-top: 70px; /* Add space for fixed navbar when scrolling to sections */
+}
+
+/* Hero Section Layout */
+.hero-section {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 0 max(8vw, 10px); /* Ensure minimum padding */
+    overflow: hidden;
+    gap: 2rem;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Ensure upper-left-design stays fixed in position */
+.upper-left-design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px; /* Increased from 500px */
+    height: auto;
+    max-width: 70vw; /* Added for responsiveness */
+    z-index: -1; /* Keep in background */
+    pointer-events: none;
+}
+
+.bottom-right-design {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 1900px; /* Increased from 700px */
+    height: auto;
+    max-width: 100vw; /* Added for responsiveness */
+    z-index: -1; /* Keep in background */
+    pointer-events: none;
+    transform: translateX(0); /* Ensure no overflow */
+} 
+
+/* UPDATED: GIF Container Styling with integrated shadow */
+.gif-container {
+    position: relative;
+    margin-top: 80px; /* Reduced from 100px to move it higher */
+    width: 850px;
+    max-width: 90vw;
+    order: 1;
+    height: 750px;
+    max-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* Adding z-index that was missing */
+}
+
+/* UPDATED: Hero GIF with shadow */
+.hero-gif {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 2; /* Above the shadow */
+}
+
+/* NEW: Shadow positioned within the gif container */
+.card-shadow {
+    position: absolute;
+    top: 100%; /* Changed from 105% to position it better under the GIF */
+    left: 50%;
+    width: 600px; /* Increased from 500px to match GIF width better */
+    height: auto;
+    max-width: 90%; /* Increased from 80% for better proportion */
+    z-index: 1;
+    opacity: 0.4; /* Slightly reduced opacity */
+    pointer-events: none;
+    transform: translate(-50%, -30%); /* Adjusted vertical offset */
+    filter: blur(5px); /* Added slight blur for more realistic shadow */
+}
+
+/* Content Positioning and Styling */
+.hero-content {
+    width: 100%;
+    max-width: 800px;
+    margin-top: clamp(80px, 15vh, 550px);
+    position: relative;
+    z-index: 2; /* Above decorative elements */
+    padding: 40px;
+    order: 2;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Text Styles with Better Typography */
+.text-left {
+    text-align: left;
+    margin-bottom: clamp(20px, 3vh, 40px);
+    width: 100%;
+}
+
+.text-right {
+    text-align: right;
+    margin-right: clamp(50px, 8vw, 100px);
+    width: 100%;
+}
+
+.subtitle {
+    color: #814365;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.5px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.title {
+    color: #8d4b70;
+    font-size: clamp(80px, 10vw, 140px);
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -4px;
+    line-height: 0.9;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.accent {
+    color: #814365;
+    font-size: clamp(24px, 3vw, 32px);
+    margin: clamp(15px, 2.5vh, 25px) 0;
+    font-weight: 200;
+    width: 100%;
+    max-width: 1500px;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    padding-right: 20px;
+    word-wrap: break-word;
+}
+
+/* Description Container */
+.description-container {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.description {
+    color: #ae6c8a;
+    font-size: clamp(14px, 1.8vw, 20px);
+    font-style: italic;
+    margin: clamp(20px, 4vh, 40px) 0;
+    max-width: 550px;
+    width: 115%;
+    line-height: 1.6;
+    position: relative;
+    word-wrap: break-word;
+}
+
+/* Enhanced Button Styling */
+.cta-button {
+    background: white;
+    color: #814365;
+    border: none;
+    padding: clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px);
+    border-radius: 25px;
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(129, 67, 101, 0.2);
+    display: block;
+    margin: 0;
+    text-align: center;
+    width: fit-content;
+    min-width: 180px;
+}
+
+.cta-button:hover {
+    background: #f3e6ef;
+    color: #8d4b70;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(129, 67, 101, 0.3);
+}
+
+/* Second Section - Skills */
+.skill-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px max(4vw, 10px); /* Reduced horizontal padding to allow more width for carousel */
+    background: linear-gradient(180deg, #e5b7cf7c 0%, #e4b7cb86 100%);
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Better balanced minimal Section Title Styling */
+.section-title {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #814365;
+    font-size: clamp(22px, 4vw, 36px); /* Increased minimum size for better readability */
+    font-weight: 150; /* Ultra-light weight as requested */
+    margin-bottom: 40px; /* Reduced margin */
+    letter-spacing: 1px; /* Slight letter spacing for elegance */
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Simplified underline */
+.section-title::after {
+    content: '';
+    display: block;
+    width: clamp(35px, 8vw, 50px); /* Slightly wider responsive width */
+    height: 1px; /* Thinner line */
+    background-color: #9a5a78; /* Slightly different color for subtlety */
+    margin: clamp(8px, 1vw, 10px) auto 0; /* Responsive margin */
+    opacity: 0.7; /* Subtle transparency */
+}
+
+/* Skill Section Specific Elements */
+.bat-design {
+    position: absolute;
+    top: -5px;
+    left: 0%;
+    width: clamp(150px, 25vw, 280px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Fixed positioning for section2_border-design */
+.section2_border-design {
+    position: absolute;
+    top: 0; /* Position at the very top of the section */
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateY(0); /* Reset any transform */
+}
+
+/* Add positioning for section2_border specifically inside skill section */
+.skill-section .section2_border-design {
+    top: 0; /* At the top of the skill section */
+    transform: translateY(0); /* Reset the transform */
+}
+
+/* Updated styling to remove container effect */
+.corousel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    overflow-x: auto;
+    padding: 40px 0;
+    gap: 20px; /* Increased gap slightly to compensate for removed containers */
+    scroll-snap-type: x mandatory;
+    background: transparent !important;
+}
+
+/* Remove scrollbar styles while keeping functionality */
+.corousel::-webkit-scrollbar {
+    display: none;
+}
+
+.corousel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.corousel img,
+.corousel > div,
+.skill-card-container,
+.corousel .card {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+/* Style for the skill cards without container effect */
+.corousel img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    animation: floatAnimation 3s ease-in-out infinite;
+    opacity: 0.95; /* Increased from 0.85 for better visibility */
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 auto;
+    max-width: 380px;
+    max-height: 532px;
+    background: transparent !important;
+}
+
+/* Make active cards more prominent */
+.corousel img.active {
+    opacity: 1;
+    transform: scale(1.05) !important;
+    z-index: 10;
+}
+
+/* Updated Carousel Container Styling */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1800px; /* Increased from 1500px to match carousel width */
+    margin: 0 auto;
+    overflow: visible; /* Allow cards to be fully visible */
+    padding: 10px 20px; /* Added horizontal padding */
+}
+
+/* Ensure skill cards maintain proper dimensions but have better spacing */
+.skill-card-container {
+    width: 380px !important;
+    height: 532px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px; /* Add horizontal margin for better spacing between cards */
+}
+
+/* Media queries for wider carousel on different screen sizes */
+@media screen and (max-width: 1800px) {
+    .corousel, .carousel-container {
+        max-width: 95vw; /* Use percentage of viewport width instead of fixed pixels */
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .corousel {
+        gap: 8px;
+    }
+    
+    .corousel img {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .corousel {
+        gap: 6px;
+    }
+    
+    .corousel img {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .section2_border-design {
+        width: 100%; /* Full width on smaller screens */
+    }
+    
+    .section-title {
+        font-size: clamp(20px, 3.8vw, 34px); /* Increased minimum */
+        margin-bottom: 35px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .corousel {
+        gap: 5px;
+        max-width: 98vw; /* Even wider on mobile to prevent cropping */
+        padding: 30px 0;
+    }
+    
+    .corousel img {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .skill-section {
+        padding: 80px 10px; /* Reduced padding on mobile */
+    }
+    
+    .section-title {
+        font-size: clamp(19px, 3.5vw, 32px); /* Increased minimum */
+        margin-bottom: 30px;
+        letter-spacing: 0.8px;
+    }
+    
+    .section-title::after {
+        width: clamp(30px, 7vw, 40px);
+        margin-top: 8px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .corousel {
+        gap: 4px;
+        padding: 20px 0;
+    }
+    
+    .corousel img {
+        width: 100%;
+        max-width: 240px;
+    }
+
+    .section2_border-design {
+        width: 100%; /* Maintain full width */
+    }
+    
+    .section-title {
+        font-size: clamp(18px, 3.2vw, 30px); /* Increased minimum */
+        margin-bottom: 25px;
+        letter-spacing: 0.6px;
+    }
+    
+    .section-title::after {
+        width: clamp(28px, 6vw, 35px);
+        margin-top: 7px;
+    }
+}
+
+/* Third Section - Contact Me */
+.contactMe-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 80px max(8vw, 10px) 120px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container for the contact section - Adjusted to accommodate the cat */
+.container-main {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 100px auto 0;
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Updated cat design positioning */
+.cat-design {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Position exactly half above container */
+    width: clamp(80px, 15%, 150px);
+    height: auto;
+    z-index: 3;
+    pointer-events: none;
+    max-width: 100%;
+}
+
+/* Main container styling */
+.main-container {
+    width: clamp(300px, 90%, 1000px);
+    display: grid;
+    grid-template-columns: 40% 60%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Left container image positioning */
+.left-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: auto;
+    z-index: 1;
+    display: none; /* Hidden for now as not visible in reference image */
+}
+
+/* Section border image positioning */
+.section2_border {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    display: none; /* Hidden for now as not visible in reference image */
+}
+
+/* Left side - Contact Info */
+.contact-info {
+    background: #9a5a78; /* Purple background for left panel */
+    padding: 40px 30px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); /* Creates the slanted edge */
+}
+
+.contact-info h2 {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700; /* Bold */
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.contact-info p {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    font-weight: 300; /* Light */
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Contact details consistent alignment */
+.contact-detail, .download-cv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Make the icons consistent with fixed width */
+.contact-detail i, .download-cv i, 
+.email-icon::before, .phone-icon::before, .cv-icon::before {
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Email styling */
+.email-icon::before {
+    content: '\f0e0'; /* Font Awesome email icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    display: inline-block;
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* Phone styling */
+.phone-icon::before {
+    content: '\f095'; /* Font Awesome phone icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    display: inline-block;
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* CV icon styling */
+.cv-icon::before {
+    content: '\f15c'; /* Font Awesome file icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+/* Fix left spacing on all contact elements */
+.contact-info > a, .contact-info > div {
+    padding-left: 5px;
+}
+
+/* Additional spacing between sections */
+.contact-info .download-cv {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Ensure text aligns properly */
+.contact-detail span, .download-cv span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Downloadable CV link */
+.download-cv {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    margin: 15px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300; /* Light */
+}
+
+/* Right side - Contact Form */
+.contact-form {
+    padding: 50px 40px;
+    background: #f6f2f5; /* Light pinkish background for form */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form inputs */
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(229, 183, 207, 0.3); /* Light pink input fields */
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 300; /* Light */
+    color: #894569;
+    font-size: 14px;
+}
+
+.form-input::placeholder {
+    color: #894569;
+    opacity: 0.7;
+}
+
+.form-input:focus {
+    outline: none;
+    background: rgba(229, 183, 207, 0.4);
+    box-shadow: 0 0 3px rgba(137, 69, 105, 0.2);
+}
+
+textarea.form-input {
+    height: 150px;
+    min-height: 150px;
+    resize: none; /* Prevent resizing and moving */
+}
+
+
+/* Send button */
+.send-btn {
+    background: #9a5a78;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 25px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.send-btn:hover {
+    background: #814365;
+}
+
+/* Responsive adjustments for the cat and container */
+@media screen and (max-width: 1200px) {
+    .cat-design {
+        width: clamp(80px, 13%, 130px);
+    }
+    
+    .container-main {
+        padding-top: 65px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .cat-design {
+        width: clamp(75px, 12%, 120px);
+    }
+    
+    .container-main {
+        padding-top: 60px;
+        margin-top: 90px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contactMe-section {
+        padding: 60px 5vw 100px;
+    }
+    
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        clip-path: none;
+        padding: 30px;
+    }
+    
+    .contact-form {
+        padding: 30px;
+    }
+    
+    .cat-design {
+        width: clamp(70px, 11%, 110px);
+    }
+    
+    .container-main {
+        padding-top: 55px;
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contactMe-section {
+        padding: 40px 4vw 80px;
+    }
+    
+    .section-title {
+        margin: 20px 0 40px;
+    }
+    
+    .main-container {
+        width: 95%;
+    }
+    
+    .contact-info, .contact-form {
+        padding: 25px 20px;
+    }
+    
+    .cat-design {
+        width: clamp(65px, 10%, 100px);
+    }
+    
+    .container-main {
+        padding-top: 45px;
+        margin-top: 70px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cat-design {
+        width: clamp(60px, 9%, 90px);
+    }
+    
+    .container-main {
+        padding-top: 40px;
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .cat-design {
+        width: clamp(55px, 8%, 80px);
+    }
+    
+    .container-main {
+        padding-top: 35px;
+        margin-top: 55px;
+    }
+    
+    .section-title {
+        font-size: clamp(17px, 3vw, 28px); /* Increased minimum */
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+    }
+    
+    .section-title::after {
+        width: clamp(25px, 5vw, 30px);
+        margin-top: 6px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cat-design {
+        width: clamp(50px, 7%, 70px);
+    }
+    
+    .container-main {
+        padding-top: 30px;
+        margin-top: 50px;
+    }
+}
+
+/* Special handling for very wide screens */
+@media screen and (min-width: 1600px) {
+    .cat-design {
+        width: clamp(100px, 16%, 170px);
+    }
+    
+    .container-main {
+        padding-top: 75px;
+    }
+    
+    .section-title {
+        font-size: clamp(24px, 2vw, 38px);
+        letter-spacing: 1.2px;
+    }
+    
+    .section-title::after {
+        width: 50px;
+        margin-top: 10px;
+    }
+}
+
+/* Ensure the cat stays visible on extremely small devices */
+@media screen and (max-width: 280px) {
+    .cat-design {
+        width: 45px; /* Minimum fixed size */
+    }
+    
+    .container-main {
+        padding-top: 25px;
+        margin-top: 45px;
+    }
+    
+    .hero-section {
+        padding: 1.5rem 2vw;
+    }
+    
+    .gif-container {
+        width: 240px;
+        height: 200px;
+    }
+    
+    .upper-left-design {
+        width: 200px;
+    }
+    
+    .bottom-right-design {
+        width: 280px;
+    }
+    
+    .title {
+        font-size: 34px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .accent {
+        font-size: 16px;
+    }
+}
+
+/* Animation for Skills Section - Subtler for larger cards */
+@keyframes floatAnimation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* Staggered animation delays for more natural movement */
+.coder { animation-delay: 0s; }
+.architect { animation-delay: 0.3s; }
+.sentinel { animation-delay: 0.6s; }
+.tinkerer { animation-delay: 0.9s; }
+.alchemist { animation-delay: 1.2s; }
+.muse { animation-delay: 1.5s; }
+.solver { animation-delay: 1.8s; }
+.observer { animation-delay: 2.1s; }
+.chamelion { animation-delay: 2.4s; }
+.collaborator { animation-delay: 2.7s; }
+
+/* Media Queries for Second and Third Sections */
+@media screen and (max-width: 968px) {
+    .skill-section,
+    .contactMe-section {
+        padding: 80px 5vw;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .bat-design {
+        width: clamp(150px, 20vw, 250px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .skill-section,
+    .contactMe-section {
+        padding: 60px 4vw;
+    }
+
+    .left-design {
+        width: clamp(100px, 12vw, 180px);
+    }
+
+    .main-container {
+        width: 95%;
+    }
+}
+
+/* High-resolution screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .section-title::after {
+        height: 0.5px; /* Even thinner line for high-res screens */
+    }
+    
+    .hero-gif {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .corousel img:hover,
+    .corousel img {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    html {
+        scroll-behavior: auto; /* Disable smooth scrolling for users who prefer reduced motion */
+    }
+    
+    .scroll-top-btn:hover {
+        transform: none; /* Disable hover animation */
+    }
+    
+    .hero-content > * {
+        animation: none !important;
+    }
+    
+    .cta-button:hover {
+        transform: none !important;
+    }
+    
+    .carousel-indicator {
+        animation: simpleFade 4s forwards;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        animation: none;
+    }
+    
+    @keyframes simpleFade {
+        0% { opacity: 0; }
+        10% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content > * {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hero-content > *:nth-child(1) { animation-delay: 0.2s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.4s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.6s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.8s; }
+
+/* Large Screens */
+@media screen and (min-width: 1440px) {
+    .hero-section {
+        padding: 0 12vw;
+        gap: 4rem;
+    }
+    
+    .hero-content {
+        min-height: 600px;
+    }
+}
+
+/* Medium-Large Screens */
+@media screen and (max-width: 1280px) {
+    .hero-section {
+        padding: 0 6vw;
+        gap: 3rem;
+    }
+
+    .hero-content {
+        min-height: 450px;
+        padding: 30px;
+    }
+    
+    .gif-container {
+        width: 650px;
+        height: 500px;
+    }
+    
+    .upper-left-design {
+        width: 600px;
+    }
+    
+    .bottom-right-design {
+        width: 1500px;
+    }
+    
+}
+
+/* Tablet Screens */
+@media screen and (max-width: 968px) {
+    .hero-section {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 4rem 5vw;
+        min-height: auto;
+        gap: 2rem;
+    }
+
+    .gif-container {
+        width: 500px;
+        height: 400px;
+        margin: 2rem auto;
+        order: 2;
+    }
+    
+    .upper-left-design {
+        width: 500px;
+    }
+    
+    .bottom-right-design {
+        width: 1000px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 700px;
+        min-height: auto;
+        margin-top: 0;
+        padding: 2rem 20px;
+        order: 1;
+    }
+
+    .text-right, .text-left {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .accent {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .description {
+        text-align: center;
+        margin: 15px auto;
+    }
+
+    .cta-button {
+        margin: 20px auto 0;
+        font-size: clamp(14px, 1.8vw, 16px);
+        padding: 14px clamp(28px, 4vw, 36px);
+    }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 576px) {
+    .hero-section {
+        padding: 3rem 4vw;
+    }
+
+    .gif-container {
+        width: 350px;
+        height: 300px;
+        margin: 1rem auto;
+    }
+
+    .upper-left-design {
+        width: 300px;
+    }
+    
+    .bottom-right-design {
+        width: 450px;
+    }
+    
+    .card-shadow {
+        width: 250px;
+    }
+
+    .hero-content {
+        padding: 1.5rem 15px;
+    }
+
+    .title {
+        font-size: clamp(45px, 7vw, 80px);
+        letter-spacing: -2px;
+    }
+
+    .subtitle {
+        font-size: clamp(18px, 2.5vw, 24px);
+    }
+
+    .accent {
+        font-size: clamp(18px, 2.2vw, 24px);
+        margin: 10px 0;
+    }
+
+    .description-container {
+        width: 95%;
+    }
+
+    .description {
+        width: 100%;
+        font-size: clamp(13px, 1.6vw, 16px);
+    }
+
+    .cta-button {
+        min-width: 160px;
+        padding: 12px clamp(24px, 3vw, 32px);
+        font-size: 14px;
+        margin: 15px auto 0;
+    }
+}
+
+/* Small Mobile Screens */
+@media screen and (max-width: 360px) {
+    .hero-section {
+        padding: 2rem 3vw;
+    }
+
+    .gif-container {
+        width: 300px;
+        height: 250px;
+    }
+    
+    .upper-left-design {
+        width: 250px;
+    }
+    
+    .bottom-right-design {
+        width: 350px;
+    }
+
+    .title {
+        font-size: clamp(40px, 6vw, 70px);
+    }
+
+    .subtitle {
+        font-size: clamp(16px, 2.2vw, 20px);
+    }
+
+    .accent {
+        font-size: clamp(16px, 2vw, 20px);
+    }
+
+    .description {
+        font-size: clamp(12px, 1.5vw, 15px);
+    }
+
+    .cta-button {
+        min-width: 140px;
+        padding: 10px 20px;
+        font-size: 13px;
+        margin: 15px auto 0;
+    }
+}
+
+/* Extra Small Mobile Screens */
+@media screen and (max-width: 320px) {
+    .gif-container {
+        width: 280px;
+        height: 220px;
+    }
+    
+    .upper-left-design {
+        width: 220px;
+    }
+    
+    .bottom-right-design {
+        width: 320px;
+    }
+}
+
+/* Landscape Mode */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        flex-direction: row;
+        padding: 2rem 4vw;
+        min-height: auto;
+        align-items: center;
+    }
+
+    .gif-container {
+        width: 450px;
+        height: 280px;
+        margin: 0;
+        order: 1;
+    }
+
+    .hero-content {
+        width: calc(100% - 470px);
+        min-height: 280px;
+        margin-top: 0;
+        padding: 1rem;
+        order: 2;
+    }
+
+    .text-right, .text-left {
+        text-align: left;
+    }
+
+    .accent, .description {
+        text-align: left;
+    }
+
+    .cta-button {
+        margin: 15px 0 0;
+    }
+}
+
+/* iPad Pro */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+    .hero-section {
+        min-height: 80vh;
+    }
+    
+    .gif-container {
+        width: 600px;
+        height: 450px;
+    }
+}
+
+/* iPhone X, XS, 11 Pro, 12, 13 Pro */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .hero-section {
+        padding: 2rem 4vw;
+    }
+    
+    .title {
+        font-size: clamp(42px, 7vw, 60px);
+    }
+    
+    .upper-left-design {
+        width: 320px;
+    }
+    
+    .bottom-right-design {
+        width: 400px;
+    }
+    
+    /* Safe area inset handling for notch */
+    .hero-content {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+    }
+}
+
+/* Samsung Galaxy Fold and other foldables */
+@media screen and (max-width: 280px) and (max-height: 653px) {
+    .hero-section {
+        padding: 1rem 2vw;
+    }
+    
+    .gif-container {
+        width: 220px;
+        height: 180px;
+    }
+    
+    .title {
+        font-size: 30px;
+    }
+}
+
+/* Surface Duo */
+@media screen and (min-width: 540px) and (max-width: 720px) and (min-height: 720px) and (max-height: 1114px) {
+    .hero-section {
+        min-height: 70vh;
+        padding: 3rem 5vw;
+    }
+    
+    .gif-container {
+        width: 450px;
+        height: 380px;
+    }
+}
+
+/* Fix for specific viewport height issues */
+@supports (-webkit-touch-callout: none) {
+    /* iOS devices */
+    .hero-section {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Ultra-wide screens */
+@media screen and (min-width: 2000px) {
+    .hero-section {
+        padding: 0 15vw;
+        max-width: 2400px;
+        margin: 0 auto;
+    }
+    
+    .decorative-elements img {
+        transform-origin: center;
+        transform: scale(1.2);
+    }
+}
+
+/* Fix for Safari overflow issues */
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        body, html {
+            width: 100%;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .decorative-elements {
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+/* Additional form validation styling */
+.form-input:invalid {
+    border-left: 4px solid #ff6b6b;
+}
+
+.form-input:valid {
+    border-left: 4px solid #74466c;
+}
+
+/* Form submission feedback */
+.form-feedback {
+    display: none;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.form-success {
+    display: block;
+    background-color: rgba(213, 107, 255, 0.2);
+    color: #fc66fc;
+}
+
+.form-error {
+    display: block;
+    background-color: rgba(255, 107, 107, 0.2);
+    color: #7d2a2a;
+}
+
+/* Fix for touch devices hover states */
+@media (hover: hover) {
+    .corousel img:hover {
+        transform: translateY(-15px) scale(1.05);
+    }
+    
+    .social-icons a:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px);
+    }
+    
+    .cta-button:hover {
+        background: #f3e6ef;
+        color: #8d4b70;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(129, 67, 101, 0.3);
+    }
+    
+    .send-btn:hover {
+        background: #814365;
+    }
+}
+
+@media (hover: none) {
+    .corousel img:active {
+        transform: translateY(-5px) scale(1.02);
+    }
+    
+    .social-icons a:active {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .cta-button:active {
+        background: #f3e6ef;
+        color: #8d4b70;
+        transform: translateY(-1px);
+    }
+    
+    .send-btn:active {
+        background: #814365;
+    }
+}
+
+/* Focus styles for accessibility */
+.form-input:focus, .cta-button:focus, .send-btn:focus, .social-icons a:focus {
+    outline: 3px solid rgba(129, 67, 101, 0.5);
+    outline-offset: 2px;
+}
+
+/* Print media query */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .hero-section, .skill-section, .contactMe-section {
+        padding: 20px !important;
+        min-height: auto !important;
+    }
+    
+    .decorative-elements, .cat-design, .bat-design, .section2_border-design {
+        display: none !important;
+    }
+    
+    .contact-info {
+        clip-path: none !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .contact-form {
+        background: white !important;
+    }
+    
+    .form-input {
+        border: 1px solid #ccc !important;
+        background: white !important;
+    }
+    
+    .cta-button, .send-btn {
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Fully Responsive Creative Carousel Indicator */
+.carousel-indicator {
+    position: absolute;
+    bottom: 8%; /* Base position */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #9a5a78;
+    font-size: clamp(14px, 2vw, 16px); /* Responsive font size */
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: floatIndicator 4s forwards;
+    font-family: 'Poppins', Arial, sans-serif;
+    padding: clamp(8px, 1.5vw, 10px) clamp(15px, 2vw, 20px); /* Responsive padding */
+    border-radius: 30px;
+    z-index: 100;
+}
+
+.carousel-indicator::before,
+.carousel-indicator::after {
+    content: '→';
+    display: inline-block;
+    font-size: clamp(16px, 2.5vw, 18px); /* Responsive arrow size */
+    font-weight: bold;
+    margin: 0 clamp(5px, 1vw, 8px);
+}
+
+.carousel-indicator::before {
+    content: '←';
+    animation: slideLeft 1.5s infinite;
+}
+
+.carousel-indicator::after {
+    content: '→';
+    animation: slideRight 1.5s infinite;
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes slideRight {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes floatIndicator {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    80% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -10px); }
+}
+
+/* Responsive adjustments for various screen sizes */
+@media (min-width: 1600px) {
+    .carousel-indicator {
+        bottom: 10%; /* More space on very large screens */
+        font-size: 18px;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .carousel-indicator {
+        bottom: 7%;
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel-indicator {
+        bottom: 6%;
+        padding: 8px 16px;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        margin: 0 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-indicator {
+        bottom: 5%;
+        padding: 7px 14px;
+        font-size: 14px;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        font-size: 16px;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-indicator {
+        bottom: 4%;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        font-size: 15px;
+        margin: 0 4px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 400px) {
+    .carousel-indicator {
+        bottom: 3%;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        font-size: 14px;
+        margin: 0 3px;
+    }
+}
+
+/* Very small devices like Galaxy Fold */
+@media (max-width: 280px) {
+    .carousel-indicator {
+        bottom: 2%;
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .carousel-indicator::before,
+    .carousel-indicator::after {
+        font-size: 13px;
+        margin: 0 2px;
+    }
+}
+
+/* Landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+    .carousel-indicator {
+        bottom: 12%;
+    }
+}
+
+/* iPads and tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .carousel-indicator {
+        bottom: 6%;
+    }
+}
+
+/* Modern phones with notches */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .carousel-indicator {
+        bottom: 4%;
+        padding-bottom: max(5px, env(safe-area-inset-bottom, 0px));
+    }
+}
+
+/* Updated Modal Styles - Creative & Minimal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(137, 69, 105, 0.4);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.modal.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  margin: 5% auto;
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(99, 51, 77, 0.25);
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.modal.show .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Creative close button */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 3px 8px rgba(129, 67, 101, 0.15);
+  border: none;
+  z-index: 10;
+}
+
+.modal-close:before, .modal-close:after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  background-color: #9a5a78;
+  transition: all 0.3s ease;
+}
+
+.modal-close:before {
+  transform: rotate(45deg);
+}
+
+.modal-close:after {
+  transform: rotate(-45deg);
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  background: #9a5a78;
+}
+
+.modal-close:hover:before,
+.modal-close:hover:after {
+  background-color: white;
+}
+
+.modal-message {
+  text-align: center;
+  padding: 10px;
+  display: none;
+  position: relative;
+}
+
+/* Success message styling */
+.modal-message.success {
+  background: #fff;
+}
+
+/* Error message styling */
+.modal-message.error {
+  background: linear-gradient(to bottom right, rgba(255, 245, 245, 0.8), rgba(255, 255, 255, 0.95));
+}
+
+.modal-message.active {
+  display: block;
+  animation: modalFadeIn 0.6s forwards;
+}
+
+/* Creative icon container */
+.modal-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-message.success .modal-icon {
+  background: linear-gradient(135deg, #e5b7cf, #9a5a78);
+  box-shadow: 0 8px 20px rgba(154, 90, 120, 0.2);
+}
+
+.modal-message.error .modal-icon {
+  background: linear-gradient(135deg, #ffcdd2, #f44336);
+  box-shadow: 0 8px 20px rgba(244, 67, 54, 0.3);
+}
+
+/* Creative icons */
+.modal-message i {
+  font-size: 36px;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative elements for icons */
+.modal-icon:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.modal-message h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: 'Poppins', Arial, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.modal-message p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.modal-message.success h3 {
+  background: linear-gradient(135deg, #9a5a78, #8d4b70);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.modal-message.error h3 {
+  background: linear-gradient(135deg, #f44336, #E57373);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Creative button */
+.modal-btn {
+  background: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.modal-message.success .modal-btn {
+  background: linear-gradient(135deg, #9a5a78, #e5b7cf);
+  color: white;
+}
+
+.modal-message.error .modal-btn {
+  background: linear-gradient(135deg, #E57373, #f44336);
+  color: white;
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Creative animation */
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+  70% {
+    transform: translateY(-5px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Modal Styles */
+@media screen and (max-width: 576px) {
+  .modal-content {
+    width: 85%;
+    padding: 30px 20px;
+  }
+  
+  .modal-message i {
+    font-size: 32px;
+  }
+  
+  .modal-message h3 {
+    font-size: 20px;
+  }
+  
+  .modal-message p {
+    font-size: 14px;
+  }
+  
+  .modal-icon {
+    width: 70px;
+    height: 70px;
+  }
+}
